@@ -8,27 +8,32 @@ The simulator enables users to query "latent spaces" of reality through an input
 
 ## Key Features
 
-- **Divination Simulation**: Generate patterns/interpretations for each system or unified mode.
-  - Sefer Yetzirah: Permutes letters/Sephirot for "creation" insights (e.g., golem-like sequence inscription).
-  - I Ching: RNG-based hexagrams with changing lines for "change" guidance.
-  - Ifá: 8-bit Odu casting with verses for "probability" advice.
-- **Comparative Mapping**: Uses 65 NSM semantic primes as roots, with cultural encodings; bitwise operations (e.g., Hamming distance) for relational links between systems.
-- **Epistemic Engine**: Biases results toward "durable" patterns (Tao-aligned, via viability scores, lemmas from CLI/searches); no steady states—models flux with time-crystal sims.
-- **3D Visualization**: Nested Fibonacci spheres (inner: Sefer r=60 blue, middle: I Ching r=110 green, outer: Ifa r=170 gold) with uniform point distribution, causal link lines, and pulsing nodes on weights; rotatable for cycles.
-- **Interfaces**:
-  - CLI: `python src/main.py simulate --system all --query "your query" --lemmas 5 --mode ternary` for outputs/tables/graphs.
-  - Web App: Flask at http://localhost:5000 with interactive form, 3D viz, metadata panels, and raycasting for details.
-- **Extensions**: Ternary aspects (I Ching moving lines), Mars holiday param (annual "crack" for future-past bias), fractal overlays (optional ponerology).
+- **Divination Simulation**: Generate patterns/interpretations for each system or unified mode.  
+  - Sefer Yetzirah: Permutes letters/Sephirot for "creation" insights (e.g., golem-like sequence inscription).  
+  - I Ching: RNG-based hexagrams with changing lines for "change" guidance.  
+  - Ifá: 8-bit Odu casting with verses for "probability" advice.  
+
+- **Comparative Mapping**: Uses 65 NSM semantic primes as roots, with cultural encodings; bitwise operations (e.g., Hamming distance) for relational links between systems.  
+
+- **Epistemic Engine**: Biases results toward "durable" patterns (Tao-aligned, via viability scores, lemmas from CLI/searches); no steady states—models flux with time-crystal sims.  
+
+- **3D Visualization**: Nested Fibonacci spheres (inner: Sefer r=60 blue, middle: I Ching r=110 green, outer: Ifa r=170 gold) with uniform point distribution, causal link lines, and pulsing nodes on weights; rotatable for cycles.  
+
+- **Interfaces**:  
+  - CLI: `python src/main.py simulate --system all --query "your query" --lemmas 5 --mode ternary` for outputs/tables/graphs.  
+  - Web App: Flask at http://localhost:5000 with interactive form, 3D viz, metadata panels, and raycasting for details.  
+
+- **Extensions**: Ternary aspects (I Ching moving lines), Mars holiday param (annual "crack" for future-past bias), fractal overlays (optional ponerology).  
 
 ## Architecture
 
-Modular Python 3.12+ app with:
-- **Core Modules**: SeferYetzirahModule, IChingModule, IfaModule (inherit DivinationEngine ABC for generate/interpret/map_to_physics/compute_viability/model_flux).
-- **Utilities**: BinaryUtils (bit-to-symbol, combinations), GraphMapper (NetworkX knowledge graphs, visualize_toroid/knowledge_graph), Comparator (Pandas tables), EpistemicEngine (viability_score, mars_holiday_bias, time_crystal_model, bitwise_distance, ternary_extension, load_primitives).
-- **Data Models**: Pydantic for SemioticPrimitive/SystemEncoding validation; primitives.json with 65 NSM primes mapped.
-- **Frontend**: Flask app.py serving Three.js index.html for 3D spheres/points/links/pulsing; /coords endpoint exports data.
-- **Testing**: 19 passing unit/integration tests (pytest) for generation, mappings, viz, etc.
-- **Dependencies**: numpy, networkx, matplotlib, pandas, sympy, pydantic, flask (no installs needed in env).
+Modular Python 3.12+ app with:  
+- **Core Modules**: SeferYetzirahModule, IChingModule, IfaModule (inherit DivinationEngine ABC for generate/interpret/map_to_physics/compute_viability/model_flux).  
+- **Utilities**: BinaryUtils (bit-to-symbol, combinations), GraphMapper (NetworkX knowledge graphs, visualize_toroid/knowledge_graph), Comparator (Pandas tables), EpistemicEngine (viability_score, mars_holiday_bias, time_crystal_model, bitwise_distance, ternary_extension, load_primitives).  
+- **Data Models**: Pydantic for SemioticPrimitive/SystemEncoding validation; primitives.json with 65 NSM primes mapped.  
+- **Frontend**: Flask app.py serving Three.js index.html for 3D spheres/points/links/pulsing; /coords endpoint exports data.  
+- **Testing**: 19 passing unit/integration tests (pytest) for generation, mappings, viz, etc.  
+- **Dependencies**: numpy, networkx, matplotlib, pandas, sympy, pydantic, flask (no installs needed in env).  
 
 Data flow: Query input → Pattern generation (RNG/permutations) → Interpretation (with epistemic bias) → Output (text/table/graph) + Viz export.
 
